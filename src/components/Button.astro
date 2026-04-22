@@ -1,0 +1,58 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'a'> {
+  href?: string;
+  variant?: 'primary' | 'ghost';
+}
+
+const { href, variant = 'primary', class: className, ...rest } = Astro.props;
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag
+  href={href}
+  class:list={['btn', `btn--${variant}`, className]}
+  {...rest}
+>
+  <slot />
+</Tag>
+
+<style>
+  .btn {
+    display: inline-block;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+    transition:
+      color 0.2s ease,
+      border-color 0.2s ease;
+  }
+
+  .btn--primary {
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 2px;
+  }
+
+  .btn--primary:hover {
+    color: var(--accent-dark);
+    border-bottom-color: var(--accent-dark);
+  }
+
+  .btn--ghost {
+    color: rgb(var(--gray));
+    border-bottom: 2px solid transparent;
+    padding-bottom: 2px;
+  }
+
+  .btn--ghost:hover {
+    color: rgb(var(--gray-dark));
+    border-bottom-color: rgb(var(--gray-light));
+  }
+</style>
