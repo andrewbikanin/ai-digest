@@ -1,33 +1,32 @@
 ---
-import AboutHeroImage from '../assets/placeholder-about.jpg';
 import Layout from '../layouts/BlogPost.astro';
 ---
 
 <Layout
-	title="О дайджесте"
-	description="AI Digest — автоматический дайджест новостей AI."
-	pubDate={new Date('2026-03-30')}
-	heroImage={AboutHeroImage}
+	title="About"
+	description="Typenorm Media is a daily digest of UX research, product design, and AI in product."
+	pubDate={new Date('2026-04-22')}
 >
 	<p>
-		AI Digest — автоматический дайджест новостей в области искусственного интеллекта,
-		машинного обучения и больших языковых моделей. Этот блог собирает, анализирует
-		и публикует обзоры без ручного участия.
+		Typenorm Media is an automated digest covering UX research, product design, interaction design,
+		and the role of AI in product development. Three stories publish every day — searched, written,
+		and committed without manual intervention.
 	</p>
 
 	<p>
-		Проект создан в рамках курса <strong>Claude Code Basics</strong>. На протяжении
-		восьми занятий блог развивается: от пустого шаблона до полностью автоматического
-		пайплайна, где Claude Code ищет новости, пишет статьи, генерирует обложки
-		и деплоит на Vercel.
+		The pipeline: <a href="https://tavily.com">Tavily</a> searches for the day's most relevant
+		stories across four topic areas. Claude reads each story and writes a structured post.
+		GitHub Actions runs the whole thing every morning and pushes directly to the repo.
+		Vercel deploys on push.
 	</p>
 
-	<h2>Редполитика</h2>
+	<h2>Editorial policy</h2>
 
 	<ul>
-		<li><strong>Тематика:</strong> AI, ML, LLM, инструменты для разработчиков.</li>
-		<li><strong>Стиль:</strong> краткий, информативный, без маркетингового языка.</li>
-		<li><strong>Аудитория:</strong> разработчики и продуктовые менеджеры.</li>
-		<li><strong>Формат:</strong> заголовок, описание (2–3 предложения), текст (300–500 слов), ссылка на источник.</li>
+		<li><strong>Topics:</strong> UX research, product &amp; interaction design, AI in UX, design industry.</li>
+		<li><strong>Audience:</strong> product designers, UX researchers, product managers, and founders who care about measurable UX outcomes.</li>
+		<li><strong>Format:</strong> TL;DR → Context → Analysis → Takeaways. 300–500 words per post.</li>
+		<li><strong>Style:</strong> confident, pragmatic, no fluff. Facts first — opinions labeled as such.</li>
+		<li><strong>Sources:</strong> always cited. Text is never copied verbatim.</li>
 	</ul>
 </Layout>
