@@ -9,7 +9,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.90.0",
@@ -21,6 +23,9 @@
     "sharp": "^0.34.3"
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "^8.6.18",
+    "@storybook/html-vite": "^8.6.18",
+    "storybook": "^8.6.18",
     "tsx": "^4.21.0"
   }
 }
