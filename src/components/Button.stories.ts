@@ -11,25 +11,35 @@ const STYLES = `<style>
     border: none;
     background: none;
     padding: 0;
-    transition: color 0.2s ease, border-color 0.2s ease;
+    transition:
+      color 160ms cubic-bezier(0.23, 1, 0.32, 1),
+      border-color 160ms cubic-bezier(0.23, 1, 0.32, 1),
+      transform 120ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .btn:active {
+    transform: scale(0.97);
   }
   .btn--primary {
     color: var(--accent);
     border-bottom: 2px solid var(--accent);
     padding-bottom: 2px;
   }
-  .btn--primary:hover {
-    color: var(--accent-dark);
-    border-bottom-color: var(--accent-dark);
+  @media (hover: hover) and (pointer: fine) {
+    .btn--primary:hover {
+      color: var(--accent-dark);
+      border-bottom-color: var(--accent-dark);
+    }
   }
   .btn--ghost {
     color: rgb(var(--gray));
     border-bottom: 2px solid transparent;
     padding-bottom: 2px;
   }
-  .btn--ghost:hover {
-    color: rgb(var(--gray-dark));
-    border-bottom-color: rgb(var(--gray-light));
+  @media (hover: hover) and (pointer: fine) {
+    .btn--ghost:hover {
+      color: rgb(var(--gray-dark));
+      border-bottom-color: rgb(var(--gray-light));
+    }
   }
 </style>`;
 

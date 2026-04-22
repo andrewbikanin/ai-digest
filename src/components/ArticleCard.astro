@@ -1,0 +1,125 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+import FormattedDate from './FormattedDate.astro';
+
+interface Props {
+  href: string;
+  title: string;
+  pubDate: Date;
+  description?: string;
+  heroImage?: ImageMetadata;
+  tags?: string[];
+}
+
+const { href, title, pubDate, description, heroImage, tags } = Astro.props;
+---
+
+<article class="card">
+  <a href={href} class="card__link">
+    {heroImage && (
+      <div class="card__image-wrap">
+        <Image class="card__image" width={720} height={360} src={heroImage} alt="" />
+      </div>
+    )}
+    <h4 class="card__title">{title}</h4>
+    <p class="card__date"><FormattedDate date={pubDate} /></p>
+    {description && <p class="card__desc">{description}</p>}
+    {tags && tags.length > 0 && (
+      <ul class="card__tags">
+        {tags.map((tag) => <li class="card__tag">{tag}</li>)}
+      </ul>
+    )}
+  </a>
+</article>
+
+<style>
+  .card {
+    display: block;
+  }
+
+  .card__link {
+    display: block;
+    text-decoration: none;
+    transition: transform 120ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .card__link:active {
+    transform: scale(0.98);
+  }
+
+  .card__image-wrap {
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
+  }
+
+  .card__image {
+    display: block;
+    width: 100%;
+    border-radius: 12px;
+    transition:
+      transform 200ms cubic-bezier(0.23, 1, 0.32, 1),
+      box-shadow 200ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .card__title {
+    margin: 0;
+    color: rgb(var(--black));
+    line-height: 1.2;
+    transition: color 160ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .card__date {
+    margin: 0;
+    color: rgb(var(--gray));
+    transition: color 160ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .card__desc {
+    margin: 0.5rem 0 0;
+    color: rgb(var(--gray));
+    font-size: 0.875em;
+    line-height: 1.5;
+  }
+
+  .card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0.75rem 0 0;
+    padding: 0;
+  }
+
+  .card__tag {
+    font-size: 0.75em;
+    font-weight: 600;
+    color: rgb(var(--gray));
+    background: rgb(var(--gray-light));
+    border-radius: 4px;
+    padding: 2px 8px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .card__link:hover .card__image {
+      transform: translateY(-4px);
+      box-shadow: var(--box-shadow);
+    }
+
+    .card__link:hover .card__title {
+      color: var(--accent);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card__link,
+    .card__image,
+    .card__title,
+    .card__date {
+      transition: none;
+    }
+  }
+</style>
